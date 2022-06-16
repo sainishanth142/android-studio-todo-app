@@ -58,7 +58,7 @@ public class categoriesadapter extends RecyclerView.Adapter<categoriesadapter.vi
             holder.layout.setBackgroundTintList(context.getResources().getColorStateList(R.color.darkmaincolor));
             holder.text.setTextColor(context.getResources().getColorStateList(R.color.white));
             list.get(position).selected=true;
-            adapter=new groupoftasksadapter(list.get(position).getGrouptasks(),context,rlist);
+            adapter=new groupoftasksadapter(list.get(position).getGrouptasks(),context);
             recyclerView.setAdapter(adapter);
         }else {
             holder.layout.setBackgroundTintList(context.getResources().getColorStateList(R.color.white));

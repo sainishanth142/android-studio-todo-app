@@ -16,19 +16,15 @@ import java.util.ArrayList;
 
 public class groupoftasksadapter extends RecyclerView.Adapter<groupoftasksadapter.viewholder> {
     ArrayList<groupoftasksmodel> list;
-    ArrayList<groupoftasksmodel> rlist;
     Context context;
     tasksadapter adapter;
     ArrayList<taskmodel> taskslist;
-    ArrayList<taskmodel> rtlist;
     RecyclerView recyclerView;
     TextView textView;
     ImageView imageView;
-    public groupoftasksadapter(ArrayList<groupoftasksmodel> list, Context context,ArrayList<groupoftasksmodel> rlist) {
-        rtlist=new ArrayList<>();
+    public groupoftasksadapter(ArrayList<groupoftasksmodel> list, Context context) {
         this.list = list;
         this.context = context;
-        this.rlist=rlist;
     }
 
     @NonNull
@@ -36,17 +32,15 @@ public class groupoftasksadapter extends RecyclerView.Adapter<groupoftasksadapte
     public groupoftasksadapter.viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new viewholder(LayoutInflater.from(context).inflate(R.layout.groupoftaskslayout,parent,false));
     }
-
     @Override
     public void onBindViewHolder(@NonNull groupoftasksadapter.viewholder holder, int position) {
         taskslist=list.get(position).getTasks();
-        adapter=new tasksadapter(context,taskslist,rtlist);
+        adapter=new tasksadapter(context,taskslist);
         recyclerView.setAdapter(adapter);
         textView.setText(list.get(position).getTitle());
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                rlist.add(list.get(position));
                 list.remove(position);
                 notifyDataSetChanged();
             }

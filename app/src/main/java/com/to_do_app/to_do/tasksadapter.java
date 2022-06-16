@@ -1,5 +1,4 @@
 package com.to_do_app.to_do;
-
 import android.content.Context;
 import android.graphics.Paint;
 import android.view.LayoutInflater;
@@ -16,19 +15,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.to_do.R;
 
 import java.util.ArrayList;
-
 public class tasksadapter extends RecyclerView.Adapter<tasksadapter.viewholder> {
     Context context;
     ArrayList<taskmodel> list;
-    ArrayList<taskmodel> rlist;
+
     TextView text1,text2;
     ImageView imageView;
     CheckBox checkBox;
     int p;
-    public tasksadapter(Context context, ArrayList<taskmodel> list,ArrayList<taskmodel> rlist) {
+    public tasksadapter(Context context, ArrayList<taskmodel> list) {
         this.context = context;
         this.list = list;
-        this.rlist=rlist;
+
     }
     @NonNull
     @Override
@@ -50,7 +48,6 @@ public class tasksadapter extends RecyclerView.Adapter<tasksadapter.viewholder> 
             @Override
             public void onClick(View v) {
                 p=position;
-                rlist.add(list.get(position));
                 list.remove(position);
                 notifyDataSetChanged();
             }
@@ -62,16 +59,12 @@ public class tasksadapter extends RecyclerView.Adapter<tasksadapter.viewholder> 
                 notifyDataSetChanged();
             }
         });
-
     }
-
     @Override
     public int getItemCount() {
         return list.size();
     }
-
     public class viewholder extends RecyclerView.ViewHolder {
-
         public viewholder(@NonNull View itemView) {
             super(itemView);
             text1=itemView.findViewById(R.id.text1);

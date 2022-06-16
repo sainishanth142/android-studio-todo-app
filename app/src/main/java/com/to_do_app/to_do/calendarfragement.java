@@ -95,13 +95,11 @@ public class calendarfragement extends Fragment {
         return ts;
     }
     private void setrecyclerview(ArrayList<groupoftasksmodel> list) {
-        adapter=new groupoftasksadapter(list,getContext(),rlist);
+        adapter=new groupoftasksadapter(list,getContext());
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
-
     }
     private void setredata() {
-        rtlist=adapter.rtlist;
         removetasks();
     }
     private void removetasks() {
@@ -152,7 +150,6 @@ public class calendarfragement extends Fragment {
         if(list1!=null)
         setrecyclerviewcontent(list1);
     }
-
     @Override
     public void onPause() {
         super.onPause();
